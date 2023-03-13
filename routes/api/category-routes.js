@@ -22,14 +22,14 @@ router.get('/:id', (req, res) => {
     include: [Product],
   })
   .then((dbCategoryData) => res.json(dbCategoryData))
-  .catch((err) => res.status(500).json(err));
+  .catch((err) => res.status(404).json(err));
 });
 
 router.post('/', (req, res) => {
   // create a new category
   Category.create(req.body)
   .then((dbCategoryData) => res.status(200).json(dbCategoryData))
-  .catch((err) => res.status(500).json(err));
+  .catch((err) => res.status(404).json(err));
 });
 
 router.put('/:id', (req, res) => {
@@ -40,7 +40,7 @@ router.put('/:id', (req, res) => {
     }
   })
   .then((dbCategoryData) => res.status(200).json(dbCategoryData))
-  .catch((err) => res.status(500).json(err));
+  .catch((err) => res.status(404).json(err));
 });
 
 router.delete('/:id', (req, res) => {
@@ -51,7 +51,7 @@ router.delete('/:id', (req, res) => {
     },
   })
   .then((dbCategoryData) => res.status(200).json(dbCategoryData))
-  .catch((err) => res.status(500).json(err));
+  .catch((err) => res.status(404).json(err));
 });
 
 module.exports = router;
